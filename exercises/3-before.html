@@ -1,35 +1,103 @@
-<div class="contact-form">
-  <div class="form-title">Contact Us</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 3: Fix Form Accessibility (Before)</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .contact-form {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      .form-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .input-group {
+        margin-bottom: 15px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .submit-button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .submit-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Accessibility Exercise</h1>
+    <p>This form has accessibility issues that need to be fixed:</p>
 
-  <div class="input-group">
-    Name
-    <input type="text" placeholder="Enter your full name" />
-  </div>
+    <div class="contact-form">
+      <div class="form-title">Contact Us</div>
 
-  <div class="input-group">
-    Email
-    <input type="text" placeholder="Enter your email address" />
-  </div>
+      <div class="input-group">
+        Name
+        <input type="text" placeholder="Enter your full name" />
+      </div>
 
-  <div class="input-group">
-    <span>Choose a topic:</span>
-    <div>
-      <input type="radio" name="topic" value="support" /> Support
-      <input type="radio" name="topic" value="sales" /> Sales
-      <input type="radio" name="topic" value="other" /> Other
+      <div class="input-group">
+        Email
+        <input type="text" placeholder="Enter your email address" />
+      </div>
+
+      <div class="input-group">
+        <span>Choose a topic:</span>
+        <div>
+          <input type="radio" name="topic" value="support" /> Support
+          <input type="radio" name="topic" value="sales" /> Sales
+          <input type="radio" name="topic" value="other" /> Other
+        </div>
+      </div>
+
+      <div class="input-group">
+        Message
+        <textarea placeholder="Type your message here..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <div class="submit-button" onclick="submitForm()">Submit</div>
+      </div>
+
+      <div id="form-error" style="color: red; display: none">
+        Please fill out all required fields.
+      </div>
     </div>
-  </div>
 
-  <div class="input-group">
-    Message
-    <textarea placeholder="Type your message here..."></textarea>
-  </div>
-
-  <div class="form-actions">
-    <div class="submit-button" onclick="submitForm()">Submit</div>
-  </div>
-
-  <div id="form-error" style="color: red; display: none">
-    Please fill out all required fields.
-  </div>
-</div>
+    <script>
+      function submitForm() {
+        alert(
+          'Form submission simulation: Form would be validated and submitted here'
+        );
+      }
+    </script>
+  </body>
+</html>

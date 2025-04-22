@@ -1,21 +1,48 @@
-<div class="header">
-  <div class="site-title">My Awesome Site</div>
-</div>
-<div class="navigation">
-  <div class="nav-item">
-    <div class="link" onclick="navigate('home')">Home</div>
-  </div>
-  <div class="nav-item">
-    <div class="link" onclick="navigate('about')">About</div>
-  </div>
-  <div class="nav-item">
-    <div class="link" onclick="navigate('contact')">Contact</div>
-  </div>
-</div>
-<div class="main-content">
-  <div class="section-title">Welcome to our site</div>
-  <div class="content">This is the main content area.</div>
-</div>
-<div class="footer">
-  <div class="copyright">© 2025 My Awesome Site</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1: Fix the DIV Soup (Before)</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="site-title">My Awesome Site</div>
+    </div>
+    <div class="navigation">
+      <div class="nav-item">
+        <div class="link" onclick="navigate('home')">Home</div>
+      </div>
+      <div class="nav-item">
+        <div class="link" onclick="navigate('about')">About</div>
+      </div>
+      <div class="nav-item">
+        <div class="link" onclick="navigate('contact')">Contact</div>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="section-title">Welcome to our site</div>
+      <div class="content">This is the main content area.</div>
+    </div>
+    <div class="footer">
+      <div class="copyright">© 2025 My Awesome Site</div>
+    </div>
+
+    <script>
+      function navigate(page) {
+        console.log('Navigating to:', page);
+        // In a real app, this would navigate to the page
+        alert('Navigating to ' + page);
+      }
+    </script>
+  </body>
+</html>

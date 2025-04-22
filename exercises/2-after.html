@@ -1,102 +1,169 @@
-<div class="custom-dropdown">
-  <button
-    id="dropdown-button"
-    class="dropdown-toggle"
-    aria-haspopup="listbox"
-    aria-expanded="false"
-    aria-controls="dropdown-menu"
-  >
-    <span id="selected-option">Select an option</span>
-    <span class="dropdown-icon" aria-hidden="true">▼</span>
-  </button>
-  <ul
-    id="dropdown-menu"
-    class="dropdown-menu"
-    role="listbox"
-    tabindex="-1"
-    style="display: none"
-  >
-    <li class="dropdown-item" role="option" tabindex="0" id="option-1">
-      Option 1
-    </li>
-    <li class="dropdown-item" role="option" tabindex="0" id="option-2">
-      Option 2
-    </li>
-    <li class="dropdown-item" role="option" tabindex="0" id="option-3">
-      Option 3
-    </li>
-  </ul>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('dropdown-button');
-    const menu = document.getElementById('dropdown-menu');
-    const options = Array.from(menu.querySelectorAll('[role="option"]'));
-    let activeIndex = -1;
-
-    // Toggle dropdown
-    button.addEventListener('click', () => toggleDropdown());
-
-    // Handle keyboard navigation for button
-    button.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        if (menu.style.display === 'none') {
-          toggleDropdown();
-          activeIndex = 0;
-          options[activeIndex].focus();
-        }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 2: Fix Keyboard Navigation (After)</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
       }
-    });
+      .custom-dropdown {
+        position: relative;
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        width: 100%;
+        text-align: left;
+        border: none;
+      }
+      .dropdown-toggle:focus {
+        outline: 2px solid #4a90e2;
+        outline-offset: -2px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        margin-top: -1px;
+        background-color: white;
+        z-index: 10;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .dropdown-item {
+        padding: 10px 15px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: #f5f5f5;
+        outline: 2px solid #4a90e2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Accessible Dropdown Example</h1>
+    <p>This dropdown is now keyboard accessible:</p>
 
-    // Handle keyboard navigation within dropdown
-    menu.addEventListener('keydown', (e) => {
-      switch (e.key) {
-        case 'ArrowDown':
-          e.preventDefault();
-          activeIndex = Math.min(activeIndex + 1, options.length - 1);
-          options[activeIndex].focus();
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          activeIndex = Math.max(activeIndex - 1, 0);
-          options[activeIndex].focus();
-          break;
-        case 'Enter':
-        case ' ':
-          e.preventDefault();
-          selectOption(options[activeIndex].textContent);
-          break;
-        case 'Escape':
-          e.preventDefault();
+    <div class="custom-dropdown">
+      <button
+        id="dropdown-button"
+        class="dropdown-toggle"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-controls="dropdown-menu"
+      >
+        <span id="selected-option">Select an option</span>
+        <span class="dropdown-icon" aria-hidden="true">▼</span>
+      </button>
+      <ul
+        id="dropdown-menu"
+        class="dropdown-menu"
+        role="listbox"
+        tabindex="-1"
+        style="display: none"
+      >
+        <li class="dropdown-item" role="option" tabindex="0" id="option-1">
+          Option 1
+        </li>
+        <li class="dropdown-item" role="option" tabindex="0" id="option-2">
+          Option 2
+        </li>
+        <li class="dropdown-item" role="option" tabindex="0" id="option-3">
+          Option 3
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('dropdown-button');
+        const menu = document.getElementById('dropdown-menu');
+        const options = Array.from(menu.querySelectorAll('[role="option"]'));
+        let activeIndex = -1;
+
+        // Toggle dropdown
+        button.addEventListener('click', () => toggleDropdown());
+
+        // Handle keyboard navigation for button
+        button.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (menu.style.display === 'none') {
+              toggleDropdown();
+              activeIndex = 0;
+              options[activeIndex].focus();
+            }
+          }
+        });
+
+        // Handle keyboard navigation within dropdown
+        menu.addEventListener('keydown', (e) => {
+          switch (e.key) {
+            case 'ArrowDown':
+              e.preventDefault();
+              activeIndex = Math.min(activeIndex + 1, options.length - 1);
+              options[activeIndex].focus();
+              break;
+            case 'ArrowUp':
+              e.preventDefault();
+              activeIndex = Math.max(activeIndex - 1, 0);
+              options[activeIndex].focus();
+              break;
+            case 'Enter':
+            case ' ':
+              e.preventDefault();
+              selectOption(options[activeIndex].textContent);
+              break;
+            case 'Escape':
+              e.preventDefault();
+              toggleDropdown();
+              button.focus();
+              break;
+          }
+        });
+
+        // Handle option selection
+        options.forEach((option) => {
+          option.addEventListener('click', () => {
+            selectOption(option.textContent);
+          });
+        });
+
+        function toggleDropdown() {
+          const isExpanded = menu.style.display !== 'none';
+          menu.style.display = isExpanded ? 'none' : 'block';
+          button.setAttribute('aria-expanded', !isExpanded);
+          if (!isExpanded) {
+            activeIndex = 0;
+            options[activeIndex].focus();
+          }
+        }
+
+        function selectOption(optionText) {
+          document.getElementById('selected-option').textContent = optionText;
           toggleDropdown();
           button.focus();
-          break;
-      }
-    });
-
-    // Handle option selection
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        selectOption(option.textContent);
+        }
       });
-    });
-
-    function toggleDropdown() {
-      const isExpanded = menu.style.display !== 'none';
-      menu.style.display = isExpanded ? 'none' : 'block';
-      button.setAttribute('aria-expanded', !isExpanded);
-      if (!isExpanded) {
-        activeIndex = 0;
-        options[activeIndex].focus();
-      }
-    }
-
-    function selectOption(optionText) {
-      document.getElementById('selected-option').textContent = optionText;
-      toggleDropdown();
-      button.focus();
-    }
-  });
-</script>
+    </script>
+  </body>
+</html>
