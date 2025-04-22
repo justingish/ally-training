@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Training Exercises</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+      }
+      .exercise {
+        background-color: #f8f9fa;
+        border-left: 4px solid #4caf50;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 0 4px 4px 0;
+      }
+      .exercise-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .difficulty {
+        color: #666;
+        font-size: 0.9em;
+      }
+      .easy {
+        color: #4caf50;
+      }
+      .medium {
+        color: #ff9800;
+      }
+      .hard {
+        color: #f44336;
+      }
+      code {
+        font-family: Monaco, monospace;
+        background-color: #f1f1f1;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      pre {
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      .hint {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 0.9em;
+        display: none;
+      }
+      .solution {
+        background-color: #d1e7dd;
+        border-left: 4px solid #198754;
+        padding: 10px;
+        margin-top: 10px;
+        display: none;
+      }
+      button {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8em;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #5a6268;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .tab-nav {
+        display: flex;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 15px;
+      }
+      .tab {
+        padding: 10px 15px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        margin-bottom: -1px;
+      }
+      .tab.active {
+        border: 1px solid #dee2e6;
+        border-bottom-color: white;
+        border-radius: 4px 4px 0 0;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Accessibility Exercises</h1>
+    <p>
+      The following exercises will help reinforce the accessibility concepts
+      covered in the training. Each exercise includes a problem to solve,
+      optional hints, and a solution you can check after attempting the
+      exercise.
+    </p>
+
+    <div class="tab-nav">
+      <div class="tab active" onclick="openTab(event, 'exercises')">
+        Exercises
+      </div>
+      <div class="tab" onclick="openTab(event, 'assessment')">
+        Self-Assessment
+      </div>
+    </div>
+
+    <div id="exercises" class="tab-content active">
+      <!-- Exercise 1: Semantic HTML -->
+      <div class="exercise">
+        <div class="exercise-title">
+          <div>Exercise 1: Fix the DIV Soup</div>
+          <div class="difficulty easy">Difficulty: Easy</div>
+        </div>
+        <p>Transform this "div soup" into proper semantic HTML:</p>
+        <pre><code>&lt;div class="header"&gt;
+  &lt;div class="site-title"&gt;My Awesome Site&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="navigation"&gt;
+  &lt;div class="nav-item"&gt;&lt;div class="link" onclick="navigate('home')"&gt;Home&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="nav-item"&gt;&lt;div class="link" onclick="navigate('about')"&gt;About&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="nav-item"&gt;&lt;div class="link" onclick="navigate('contact')"&gt;Contact&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="main-content"&gt;
+  &lt;div class="section-title"&gt;Welcome to our site&lt;/div&gt;
+  &lt;div class="content"&gt;This is the main content area.&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="footer"&gt;
+  &lt;div class="copyright"&gt;© 2025 My Awesome Site&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <button onclick="toggleElement('hint1')">Show Hint</button>
+        <button onclick="toggleElement('solution1')">Show Solution</button>
+
+        <div id="hint1" class="hint">
+          <p>
+            Consider which HTML5 semantic elements would be appropriate to
+            replace each div:
+          </p>
+          <ul>
+            <li>
+              For page structure: <code>&lt;header&gt;</code>,
+              <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+              <code>&lt;footer&gt;</code>
+            </li>
+            <li>
+              For content organization: <code>&lt;h1&gt;</code>,
+              <code>&lt;h2&gt;</code>, <code>&lt;article&gt;</code>,
+              <code>&lt;section&gt;</code>
+            </li>
+            <li>
+              For navigation: <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>,
+              <code>&lt;li&gt;</code>, <code>&lt;a&gt;</code>
+            </li>
+            <li>Remember to replace onclick handlers with proper links</li>
+          </ul>
+        </div>
+
+        <div id="solution1" class="solution">
+          <pre><code>&lt;header&gt;
+  &lt;h1&gt;My Awesome Site&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+  &lt;h2&gt;Welcome to our site&lt;/h2&gt;
+  &lt;p&gt;This is the main content area.&lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+  &lt;p&gt;© 2025 My Awesome Site&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Exercise 2: Keyboard Navigation -->
+      <div class="exercise">
+        <div class="exercise-title">
+          <div>Exercise 2: Fix Keyboard Navigation</div>
+          <div class="difficulty medium">Difficulty: Medium</div>
+        </div>
+        <p>
+          This custom dropdown component isn't keyboard accessible. Modify it to
+          support keyboard navigation and proper ARIA attributes:
+        </p>
+        <pre><code>&lt;div class="custom-dropdown"&gt;
+  &lt;div class="dropdown-toggle" onclick="toggleDropdown()"&gt;
+    &lt;span id="selected-option"&gt;Select an option&lt;/span&gt;
+    &lt;span class="dropdown-icon"&gt;▼&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div id="dropdown-menu" class="dropdown-menu" style="display: none;"&gt;
+    &lt;div class="dropdown-item" onclick="selectOption('Option 1')"&gt;Option 1&lt;/div&gt;
+    &lt;div class="dropdown-item" onclick="selectOption('Option 2')"&gt;Option 2&lt;/div&gt;
+    &lt;div class="dropdown-item" onclick="selectOption('Option 3')"&gt;Option 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleDropdown() {
+  const menu = document.getElementById('dropdown-menu');
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
+function selectOption(option) {
+  document.getElementById('selected-option').textContent = option;
+  toggleDropdown();
+}
+&lt;/script&gt;</code></pre>
+
+        <button onclick="toggleElement('hint2')">Show Hint</button>
+        <button onclick="toggleElement('solution2')">Show Solution</button>
+
+        <div id="hint2" class="hint">
+          <ul>
+            <li>Replace the main toggle element with a button</li>
+            <li>
+              Use appropriate ARIA attributes: <code>aria-expanded</code>,
+              <code>aria-controls</code>, and <code>aria-haspopup</code>
+            </li>
+            <li>Make items focusable and keyboard-selectable</li>
+            <li>
+              Consider role="listbox" for the dropdown with role="option" for
+              items
+            </li>
+            <li>
+              Add keyboard event listeners for Enter, Space, Up/Down arrows, and
+              Escape
+            </li>
+          </ul>
+        </div>
+
+        <div id="solution2" class="solution">
+          <pre><code>&lt;div class="custom-dropdown"&gt;
+  &lt;button 
+    id="dropdown-button"
+    class="dropdown-toggle" 
+    aria-haspopup="listbox" 
+    aria-expanded="false"
+    aria-controls="dropdown-menu"&gt;
+    &lt;span id="selected-option"&gt;Select an option&lt;/span&gt;
+    &lt;span class="dropdown-icon" aria-hidden="true"&gt;▼&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul id="dropdown-menu" class="dropdown-menu" role="listbox" tabindex="-1" style="display: none;"&gt;
+    &lt;li class="dropdown-item" role="option" tabindex="0" id="option-1"&gt;Option 1&lt;/li&gt;
+    &lt;li class="dropdown-item" role="option" tabindex="0" id="option-2"&gt;Option 2&lt;/li&gt;
+    &lt;li class="dropdown-item" role="option" tabindex="0" id="option-3"&gt;Option 3&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('dropdown-button');
+  const menu = document.getElementById('dropdown-menu');
+  const options = Array.from(menu.querySelectorAll('[role="option"]'));
+  let activeIndex = -1;
+
+  // Toggle dropdown
+  button.addEventListener('click', () => toggleDropdown());
+
+  // Handle keyboard navigation for button
+  button.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (menu.style.display === 'none') {
+        toggleDropdown();
+        activeIndex = 0;
+        options[activeIndex].focus();
+      }
+    }
+  });
+
+  // Handle keyboard navigation within dropdown
+  menu.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, options.length - 1);
+        options[activeIndex].focus();
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+        options[activeIndex].focus();
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        selectOption(options[activeIndex].textContent);
+        break;
+      case 'Escape':
+        e.preventDefault();
+        toggleDropdown();
+        button.focus();
+        break;
+    }
+  });
+
+  // Handle option selection
+  options.forEach((option) => {
+    option.addEventListener('click', () => {
+      selectOption(option.textContent);
+    });
+  });
+
+  function toggleDropdown() {
+    const isExpanded = menu.style.display !== 'none';
+    menu.style.display = isExpanded ? 'none' : 'block';
+    button.setAttribute('aria-expanded', !isExpanded);
+    if (!isExpanded) {
+      activeIndex = 0;
+      options[activeIndex].focus();
+    }
+  }
+
+  function selectOption(optionText) {
+    document.getElementById('selected-option').textContent = optionText;
+    toggleDropdown();
+    button.focus();
+  }
+});
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Exercise 3: Form Accessibility -->
+      <div class="exercise">
+        <div class="exercise-title">
+          <div>Exercise 3: Fix Form Accessibility</div>
+          <div class="difficulty medium">Difficulty: Medium</div>
+        </div>
+        <p>This form has several accessibility issues. Fix them:</p>
+        <pre><code>&lt;div class="contact-form"&gt;
+  &lt;div class="form-title"&gt;Contact Us&lt;/div&gt;
+  
+  &lt;div class="input-group"&gt;
+    Name
+    &lt;input type="text" placeholder="Enter your full name"/&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="input-group"&gt;
+    Email
+    &lt;input type="text" placeholder="Enter your email address"/&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="input-group"&gt;
+    &lt;span&gt;Choose a topic:&lt;/span&gt;
+    &lt;div&gt;
+      &lt;input type="radio" name="topic" value="support"/&gt; Support
+      &lt;input type="radio" name="topic" value="sales"/&gt; Sales
+      &lt;input type="radio" name="topic" value="other"/&gt; Other
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="input-group"&gt;
+    Message
+    &lt;textarea placeholder="Type your message here..."&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-actions"&gt;
+    &lt;div class="submit-button" onclick="submitForm()"&gt;Submit&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div id="form-error" style="color: red; display: none;"&gt;
+    Please fill out all required fields.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <button onclick="toggleElement('hint3')">Show Hint</button>
+        <button onclick="toggleElement('solution3')">Show Solution</button>
+
+        <div id="hint3" class="hint">
+          <ul>
+            <li>Use a proper <code>&lt;form&gt;</code> element</li>
+            <li>
+              Add a <code>&lt;fieldset&gt;</code> and
+              <code>&lt;legend&gt;</code> for the radio button group
+            </li>
+            <li>
+              Associate labels with form controls using the
+              <code>for</code> attribute
+            </li>
+            <li>Add proper <code>id</code> attributes to all form controls</li>
+            <li>
+              Replace <code>div.submit-button</code> with a proper
+              <code>&lt;button type="submit"&gt;</code>
+            </li>
+            <li>
+              Add required attributes and proper error handling with ARIA
+              attributes
+            </li>
+            <li>
+              Use appropriate input types (e.g., <code>type="email"</code>)
+            </li>
+          </ul>
+        </div>
+
+        <div id="solution3" class="solution">
+          <pre><code>&lt;form class="contact-form"&gt;
+  &lt;h2 class="form-title"&gt;Contact Us&lt;/h2&gt;
+  
+  &lt;div class="input-group"&gt;
+    &lt;label for="name"&gt;Name&lt;/label&gt;
+    &lt;input 
+      id="name" 
+      type="text" 
+      placeholder="Enter your full name" 
+      required 
+      aria-describedby="name-error"
+    /&gt;
+    &lt;div id="name-error" class="error-message" role="alert"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="input-group"&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input 
+      id="email" 
+      type="email" 
+      placeholder="Enter your email address" 
+      required 
+      aria-describedby="email-error"
+    /&gt;
+    &lt;div id="email-error" class="error-message" role="alert"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;fieldset class="input-group"&gt;
+    &lt;legend&gt;Choose a topic:&lt;/legend&gt;
+    &lt;div class="radio-group"&gt;
+      &lt;input id="radio-support" type="radio" name="topic" value="support" required/&gt; 
+      &lt;label for="radio-support"&gt;Support&lt;/label&gt;
+      
+      &lt;input id="radio-sales" type="radio" name="topic" value="sales"/&gt; 
+      &lt;label for="radio-sales"&gt;Sales&lt;/label&gt;
+      
+      &lt;input id="radio-other" type="radio" name="topic" value="other"/&gt; 
+      &lt;label for="radio-other"&gt;Other&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+  
+  &lt;div class="input-group"&gt;
+    &lt;label for="message"&gt;Message&lt;/label&gt;
+    &lt;textarea 
+      id="message" 
+      placeholder="Type your message here..." 
+      required 
+      aria-describedby="message-error"
+    &gt;&lt;/textarea&gt;
+    &lt;div id="message-error" class="error-message" role="alert"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-actions"&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div id="form-error" class="form-error" role="alert" style="color: red; display: none;"&gt;
+    Please fill out all required fields.
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Exercise 4: ARIA Attributes -->
+      <div class="exercise">
+        <div class="exercise-title">
+          <div>Exercise 4: Fix ARIA Implementation</div>
+          <div class="difficulty hard">Difficulty: Hard</div>
+        </div>
+        <p>
+          This accordion component has incorrect ARIA implementation. Fix the
+          issues:
+        </p>
+        <pre><code>&lt;style&gt;
+/* Accordion styles that you can copy */
+.accordion {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+.accordion-item:last-child {
+  border-bottom: none;
+}
+.accordion-header {
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-header:hover {
+  background-color: #e9e9e9;
+}
+.accordion-header:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: -2px;
+}
+.accordion-header[aria-expanded="true"] {
+  background-color: #e0e0e0;
+}
+.accordion-header .icon {
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.accordion-header[aria-expanded="true"] .icon {
+  transform: rotate(45deg);
+}
+.accordion-panel {
+  padding: 0 15px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.accordion-panel:not([hidden]) {
+  padding: 15px;
+  max-height: 100px;
+}
+&lt;/style&gt;
+
+&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;div class="accordion-header" onclick="togglePanel('panel1')" aria-expanded="false"&gt;
+      Section 1
+      &lt;span class="icon"&gt;+&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id="panel1" class="accordion-panel" hidden aria-hidden="false"&gt;
+      &lt;p&gt;Content for section 1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="accordion-item"&gt;
+    &lt;div class="accordion-header" onclick="togglePanel('panel2')" aria-expanded="false"&gt;
+      Section 2
+      &lt;span class="icon"&gt;+&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div id="panel2" class="accordion-panel" hidden aria-hidden="false"&gt;
+      &lt;p&gt;Content for section 2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function togglePanel(panelId) {
+  const panel = document.getElementById(panelId);
+  const header = panel.previousElementSibling;
+  const isExpanded = header.getAttribute('aria-expanded') === 'true';
+  
+  header.setAttribute('aria-expanded', !isExpanded);
+  panel.hidden = isExpanded;
+  
+  const icon = header.querySelector('.icon');
+  icon.textContent = isExpanded ? '+' : '-';
+}
+&lt;/script&gt;</code></pre>
+
+        <button onclick="toggleElement('hint4')">Show Hint</button>
+        <button onclick="toggleElement('solution4')">Show Solution</button>
+
+        <div id="hint4" class="hint">
+          <ul>
+            <li>Use <code>button</code> element for the accordion headers</li>
+            <li>
+              Add proper <code>aria-controls</code> to link the button to its
+              panel
+            </li>
+            <li>
+              Make sure <code>aria-expanded</code> and
+              <code>aria-hidden</code> states are synchronized
+            </li>
+            <li>Add keyboard support (Enter/Space)</li>
+            <li>Consider adding <code>aria-labelledby</code> to the panels</li>
+            <li>Mark decorative icons with <code>aria-hidden="true"</code></li>
+          </ul>
+        </div>
+
+        <div id="solution4" class="solution">
+          <pre><code>&lt;style&gt;
+/* Accordion styles that you can copy */
+.accordion {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+.accordion-item:last-child {
+  border-bottom: none;
+}
+.accordion-header {
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.accordion-header:hover {
+  background-color: #e9e9e9;
+}
+.accordion-header:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: -2px;
+}
+.accordion-header[aria-expanded="true"] {
+  background-color: #e0e0e0;
+}
+.accordion-header .icon {
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.accordion-header[aria-expanded="true"] .icon {
+  transform: rotate(45deg);
+}
+.accordion-panel {
+  padding: 0 15px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.accordion-panel:not([hidden]) {
+  padding: 15px;
+  max-height: 100px;
+}
+&lt;/style&gt;
+
+&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;button 
+      id="header1"
+      class="accordion-header" 
+      aria-expanded="false"
+      aria-controls="panel1"&gt;
+      Section 1
+      &lt;span class="icon" aria-hidden="true"&gt;+&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div 
+      id="panel1" 
+      class="accordion-panel" 
+      role="region"
+      aria-labelledby="header1"
+      hidden&gt;
+      &lt;p&gt;Content for section 1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="accordion-item"&gt;
+    &lt;button 
+      id="header2"
+      class="accordion-header" 
+      aria-expanded="false"
+      aria-controls="panel2"&gt;
+      Section 2
+      &lt;span class="icon" aria-hidden="true"&gt;+&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div 
+      id="panel2" 
+      class="accordion-panel" 
+      role="region"
+      aria-labelledby="header2"
+      hidden&gt;
+      &lt;p&gt;Content for section 2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', () => {
+  const headers = document.querySelectorAll('.accordion-header');
+  
+  headers.forEach(header => {
+    // Add click handler
+    header.addEventListener('click', () => {
+      togglePanel(header);
+    });
+    
+    // Add keyboard support
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        togglePanel(header);
+      }
+    });
+  });
+  
+  function togglePanel(header) {
+    const panelId = header.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    const isExpanded = header.getAttribute('aria-expanded') === 'true';
+    
+    // Update expanded state
+    header.setAttribute('aria-expanded', !isExpanded);
+    
+    // Toggle panel visibility
+    panel.hidden = isExpanded;
+    
+    // Update icon
+    const icon = header.querySelector('.icon');
+    icon.textContent = isExpanded ? '+' : '-';
+  }
+});
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div id="assessment" class="tab-content">
+      <h2>Accessibility Self-Assessment Checklist</h2>
+
+      <p>
+        Use this checklist to evaluate your current web application's
+        accessibility:
+      </p>
+
+      <h3>1. Semantic HTML</h3>
+      <ul>
+        <li>
+          Do you use appropriate heading levels (<code>&lt;h1&gt;</code> through
+          <code>&lt;h6&gt;</code>) in a logical order?
+        </li>
+        <li>
+          Are <code>&lt;button&gt;</code> elements used for interactive controls
+          instead of styled <code>&lt;div&gt;</code> elements?
+        </li>
+        <li>
+          Are navigation menus wrapped in <code>&lt;nav&gt;</code> elements?
+        </li>
+        <li>
+          Do you use <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>,
+          <code>&lt;aside&gt;</code>, <code>&lt;header&gt;</code>, and
+          <code>&lt;footer&gt;</code> elements where appropriate?
+        </li>
+        <li>
+          Are <code>&lt;table&gt;</code> elements used for tabular data, with
+          proper <code>&lt;th&gt;</code>, <code>&lt;thead&gt;</code>, etc.?
+        </li>
+      </ul>
+
+      <h3>2. Keyboard Navigation</h3>
+      <ul>
+        <li>Can all interactive elements be accessed via the Tab key?</li>
+        <li>
+          Is there a visible focus indicator for all interactive elements?
+        </li>
+        <li>Can all functionality be operated using only the keyboard?</li>
+        <li>
+          Are custom components like dropdowns and modals properly handling
+          keyboard events?
+        </li>
+        <li>
+          Is focus properly managed when modals open/close or content changes?
+        </li>
+      </ul>
+
+      <h3>3. ARIA Attributes</h3>
+      <ul>
+        <li>
+          Are <code>aria-label</code> or <code>aria-labelledby</code> used for
+          elements that need accessible names?
+        </li>
+        <li>
+          Are dynamic content changes announced via
+          <code>aria-live</code> regions?
+        </li>
+        <li>Are proper landmark roles used for primary page sections?</li>
+        <li>
+          Is <code>aria-expanded</code> used for toggling controls like
+          accordions and dropdowns?
+        </li>
+        <li>
+          Are decorative images and icons marked with
+          <code>aria-hidden="true"</code>?
+        </li>
+      </ul>
+
+      <h3>4. Forms</h3>
+      <ul>
+        <li>Do all form controls have properly associated labels?</li>
+        <li>Are validation errors announced to screen readers?</li>
+        <li>
+          Are required fields clearly indicated both visually and for screen
+          readers?
+        </li>
+        <li>
+          Are form groups like radio buttons wrapped in
+          <code>&lt;fieldset&gt;</code> with <code>&lt;legend&gt;</code>?
+        </li>
+        <li>
+          Do error messages provide clear instructions on how to fix issues?
+        </li>
+      </ul>
+
+      <h3>5. Images and Media</h3>
+      <ul>
+        <li>Do all informative images have meaningful alt text?</li>
+        <li>
+          Do decorative images have empty alt attributes (<code>alt=""</code>)?
+        </li>
+        <li>Do videos have captions and audio descriptions?</li>
+        <li>Do audio files have transcripts?</li>
+        <li>Can media players be operated with a keyboard?</li>
+      </ul>
+
+      <h3>6. Color and Contrast</h3>
+      <ul>
+        <li>
+          Do text elements meet WCAG AA contrast requirements (4.5:1 for normal
+          text, 3:1 for large text)?
+        </li>
+        <li>Is color not the only way to convey information?</li>
+        <li>Are focus indicators visible with sufficient contrast?</li>
+        <li>Are links distinguishable from regular text?</li>
+        <li>Have you tested the interface in high contrast mode?</li>
+      </ul>
+
+      <h3>Actions</h3>
+      <p>For any "No" answers:</p>
+      <ol>
+        <li>Prioritize fixes based on impact and frequency of usage</li>
+        <li>Create tickets for accessibility improvements</li>
+        <li>
+          Plan for regular accessibility testing in your development process
+        </li>
+        <li>Consider automated tools like axe, Lighthouse, or WAVE</li>
+      </ol>
+    </div>
+
+    <script>
+      function toggleElement(id) {
+        const element = document.getElementById(id);
+        if (element.style.display === 'block') {
+          element.style.display = 'none';
+        } else {
+          element.style.display = 'block';
+        }
+      }
+
+      function openTab(evt, tabName) {
+        // Hide all tab content
+        const tabContents = document.getElementsByClassName('tab-content');
+        for (let i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove('active');
+        }
+
+        // Remove "active" class from all tabs
+        const tabs = document.getElementsByClassName('tab');
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove('active');
+        }
+
+        // Show the current tab and add "active" class to the button that opened it
+        document.getElementById(tabName).classList.add('active');
+        evt.currentTarget.classList.add('active');
+      }
+    </script>
+  </body>
+</html>
