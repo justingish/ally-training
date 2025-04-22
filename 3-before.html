@@ -1,0 +1,35 @@
+<div class="contact-form">
+  <div class="form-title">Contact Us</div>
+
+  <div class="input-group">
+    Name
+    <input type="text" placeholder="Enter your full name" />
+  </div>
+
+  <div class="input-group">
+    Email
+    <input type="text" placeholder="Enter your email address" />
+  </div>
+
+  <div class="input-group">
+    <span>Choose a topic:</span>
+    <div>
+      <input type="radio" name="topic" value="support" /> Support
+      <input type="radio" name="topic" value="sales" /> Sales
+      <input type="radio" name="topic" value="other" /> Other
+    </div>
+  </div>
+
+  <div class="input-group">
+    Message
+    <textarea placeholder="Type your message here..."></textarea>
+  </div>
+
+  <div class="form-actions">
+    <div class="submit-button" onclick="submitForm()">Submit</div>
+  </div>
+
+  <div id="form-error" style="color: red; display: none">
+    Please fill out all required fields.
+  </div>
+</div>

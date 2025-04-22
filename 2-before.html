@@ -1,0 +1,23 @@
+<div class="custom-dropdown">
+  <div class="dropdown-toggle" onclick="toggleDropdown()">
+    <span id="selected-option">Select an option</span>
+    <span class="dropdown-icon">▼</span>
+  </div>
+  <div id="dropdown-menu" class="dropdown-menu" style="display: none">
+    <div class="dropdown-item" onclick="selectOption('Option 1')">Option 1</div>
+    <div class="dropdown-item" onclick="selectOption('Option 2')">Option 2</div>
+    <div class="dropdown-item" onclick="selectOption('Option 3')">Option 3</div>
+  </div>
+</div>
+
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdown-menu');
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function selectOption(option) {
+    document.getElementById('selected-option').textContent = option;
+    toggleDropdown();
+  }
+</script>
